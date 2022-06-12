@@ -1,5 +1,1 @@
-- platform: xiaomi_miio_airpurifier
-  name: Xiaomi Air Humidifier
-  host: !secret humidifier_ip_addr
-  token: !secret humidifier_token
-  model: deerma.humidifier.jsq
+fan:

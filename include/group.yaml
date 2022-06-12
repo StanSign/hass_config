@@ -1,13 +1,14 @@
-light:
-  name: Light
-  entities:
-    - light.desk_bulb_light
-    - light.under_desk_strip_light
-    - light.xiaomi_desk_strip
-    - group.stand_light
+group:
+  light:
+    name: Light
+    entities:
+      - light.desk_bulb_light
+      - light.under_desk_strip_light
+      - light.xiaomi_desk_strip
+      - group.stand_light
 
-stand_light:
-  name: Stand Light
-  entities:
-    - light.hue_color_lamp_left
-    - light.hue_color_lamp_right
+  stand_light:
+    name: Stand Light
+    entities:
+      - light.hue_color_lamp_left
+      - light.hue_color_lamp_right

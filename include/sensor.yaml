@@ -1,151 +1,104 @@
-- platform: version
-  name: hass_version_installed
-  source: local
+sensor:
+  - platform: version
+    name: hass_version_installed
+    source: local
 
-- platform: version
-  name: hass_version_latest
-  source: hassio
+  - platform: version
+    name: hass_version_latest
+    source: hassio
 
-- platform: version
-  name: hass_version_latest_beta
-  source: hassio
-  beta: true
+  - platform: version
+    name: hass_version_latest_beta
+    source: hassio
+    beta: true
 
-- platform: rest
-  name: hass_release_notes
-  resource: https://api.github.com/repos/home-assistant/core/releases/latest
-  value_template: >
-    {{ value_json.name }}
-  json_attributes: 
-    - body
-  scan_interval: 21600
+  - platform: rest
+    name: hass_release_notes
+    resource: https://api.github.com/repos/home-assistant/core/releases/latest
+    value_template: >
+      {{ value_json.name }}
+    json_attributes: 
+      - body
+    scan_interval: 21600
 
-- platform: rest
-  name: hass_release_notes_rc
-  resource: https://api.github.com/repos/home-assistant/core/releases?per_page=1
-  value_template: >
-    {{ value_json[0].name }}
-  json_attributes:
-    - body
-  scan_interval: 21600
+  - platform: rest
+    name: hass_release_notes_rc
+    resource: https://api.github.com/repos/home-assistant/core/releases?per_page=1
+    value_template: >
+      {{ value_json[0].name }}
+    json_attributes:
+      - body
+    scan_interval: 21600
 
-- platform: filesize
-  file_paths:
-    - /config/home-assistant_v2.db
-    - /config/home-assistant.log
+  - platform: filesize
+    file_paths:
+      - /config/home-assistant_v2.db
+      - /config/home-assistant.log
 
-- platform: uptime
+  - platform: uptime
 
-- platform: sql
-  db_url: !secret recorder_db_url
-  queries:
-    - name: Database
-      query: >
-        SELECT table_schema "database", Round(Sum(data_length + index_length) / POWER(1024,2), 1) 
-        "value" FROM information_schema.tables WHERE table_schema="homeassistant" GROUP BY table_schema;
-      column: value
-      unit_of_measurement: MB
+  - platform: sql
+    db_url: !secret recorder_db_url
+    queries:
+      - name: Database
+        query: >
+          SELECT table_schema "database", Round(Sum(data_length + index_length) / POWER(1024,2), 1) 
+          "value" FROM information_schema.tables WHERE table_schema="homeassistant" GROUP BY table_schema;
+        column: value
+        unit_of_measurement: MB
 
-- platform: systemmonitor
-  resources:
-    - type: processor_temperature
-    - type: processor_use
-    - type: memory_use_percent
-    - type: disk_use_percent
-      arg: /home
-    - type: throughput_network_in
-      arg: eth0
-    - type: throughput_network_out
-      arg: eth0
-    - type: last_boot
+  - platform: systemmonitor
+    resources:
+      - type: processor_temperature
+      - type: processor_use
+      - type: memory_use_percent
+      - type: disk_use_percent
+        arg: /home
+      - type: throughput_network_in
+        arg: eth0
+      - type: throughput_network_out
+        arg: eth0
+      - type: last_boot
 
-- platform: time_date
-  display_options:
-    - 'time'
-    - 'date'
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
 
-- platform: naver_weather
-  area: '경기도+부천시+상동+날씨'
+  - platform: naver_weather
+    area: '경기도+부천시+상동+날씨'
 
-- platform: dnsip
+  - platform: dnsip
 
-- platform: avanza_stock
-  stock: 
-    - id: 1255424
-      name: Lucid Group
-      purchase_price: 37.01
-    - id: 4478
-      name: NVIDIA
-    - id: 238449
-      name: Tesla
-    - id: 3323
-      name: Apple
+  # Template Sensors
+  - platform: template
+    sensors:
+      placeholder:
+        value_template: ' '
 
-# Template Sensors
-- platform: template
-  sensors:
-    placeholder:
-      value_template: ' '
-
-    hass_version: 
-      icon_template: 'mdi:home-assistant'
-      friendly_name_template: >
-        Installed {{ states('sensor.hass_version_installed') }}
-      value_template: >
-        {% if states('sensor.hass_version_installed') == states('sensor.hass_release_notes') %}
-          Latest
-        {% else %}
-          {{ states('sensor.hass_release_notes') }}
-        {% endif %}
-
-    hass_uptime:
-      friendly_name: Last restart
-      icon_template: mdi:update
-      value_template: >
-        {% set uptime = (as_timestamp(now()) - as_timestamp(states('sensor.uptime'))) | float / 60 %}
-        {% if uptime < 1 %} {{ (uptime * 60) | int }} seconds ago
-        {% elif uptime | int == 1 %} 1 minute ago
-        {% elif uptime | int > 1 %}
-          {% if uptime | int < 60 %} {{ uptime | int }} minutes ago
-          {% elif uptime | int / 60 == 24 %} {{ (uptime | int / 60 / 24) | int }} day ago
-          {% elif uptime | int / 60 >= 24 %} {{ (uptime | int / 60 / 24) | int }} days ago
-          {% elif uptime | int >= 60 and uptime | int < 120 %} an hour ago
-          {% elif uptime | int >= 120 %} {{ (uptime | int / 60) | int }} hours ago
+      hass_version: 
+        icon_template: 'mdi:home-assistant'
+        friendly_name_template: >
+          Installed {{ states('sensor.hass_version_installed') }}
+        value_template: >
+          {% if states('sensor.hass_version_installed') == states('sensor.hass_release_notes') %}
+            Latest
+          {% else %}
+            {{ states('sensor.hass_release_notes') }}
           {% endif %}
-        {% endif %}
 
-    curtain:
-      friendly_name: Curtain State
-      icon_template: mdi:window-open-variant
-      entity_id:
-        - cover.curtain
-      value_template: >
-        {% if state_attr('cover.curtain', 'position') | int < 10 %} 
-          Closed
-        {% elif state_attr('cover.curtain', 'position') | int > 90 %} 
-          Open
-        {% else %} 
-          Open {{ state_attr('cover.curtain', 'position') }}%
-        {% endif %}
-
-    presence_sensor:
-      friendly_name: Presence
-      entity_id:
-        - input_boolean.home_mode
-      value_template: >
-        {% if states('input_boolean.home_mode') == 'on' %}
-          Home
-        {% else %}
-          Away
-        {% endif %}
-
-    airhumidifier_temperature:
-      friendly_name: Air Humidifier Temperature
-      value_template: '{{ states.fan.xiaomi_air_humidifier.attributes.temperature }}'
-      unit_of_measurement: '°C'
-      
-    airhumidifier_humidity:
-      friendly_name: Air Humidifier Humidity
-      value_template: '{{ states.fan.xiaomi_air_humidifier.attributes.humidity }}'
-      unit_of_measurement: '%'
-      icon_template: mdi:water-percent
+      hass_uptime:
+        friendly_name: Last restart
+        icon_template: mdi:update
+        value_template: >
+          {% set uptime = (as_timestamp(now()) - as_timestamp(states('sensor.uptime'))) | float / 60 %}
+          {% if uptime < 1 %} {{ (uptime * 60) | int }} seconds ago
+          {% elif uptime | int == 1 %} 1 minute ago
+          {% elif uptime | int > 1 %}
+            {% if uptime | int < 60 %} {{ uptime | int }} minutes ago
+            {% elif uptime | int / 60 == 24 %} {{ (uptime | int / 60 / 24) | int }} day ago
+            {% elif uptime | int / 60 >= 24 %} {{ (uptime | int / 60 / 24) | int }} days ago
+            {% elif uptime | int >= 60 and uptime | int < 120 %} an hour ago
+            {% elif uptime | int >= 120 %} {{ (uptime | int / 60) | int }} hours ago
+            {% endif %}
+          {% endif %}

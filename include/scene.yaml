@@ -1,922 +1,923 @@
-- id: scene_study_mode
-  name: Scene_Study
-  entities:
-    light.desk_bulb:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - finish_effect
-      - stop_effect
-      supported_color_modes:
-      - xy
-      color_mode: xy
-      brightness: 255
-      hs_color:
-      - 15
-      - 1.569
-      rgb_color:
-      - 255
-      - 252
-      - 251
-      xy_color:
-      - 0.326
-      - 0.329
-      color:
-        x: 0.326
-        y: 0.329
-      linkquality: 105
-      update:
-        state: idle
-      update_available: false
-      friendly_name: Desk Bulb
-      supported_features: 61
-      state: 'on'
-    light.xiaomi_desk_strip:
-      min_mireds: 153
-      max_mireds: 588
-      effect_list:
-      - Strobe color
-      - Police
-      - Christmas
-      - RGB
-      - Random Loop
-      - Fast Random Loop
-      - LSD
-      - Slowdown
-      - Night Mode
-      - Date Night
-      - Movie
-      - Sunrise
-      - Sunset
-      - Romance
-      - Happy Birthday
-      - Disco
-      - Strobe epilepsy!
-      - Alarm
-      - Police2
-      - WhatsApp
-      - Facebook
-      - Twitter
-      - Home
-      - Candle Flicker
-      - Slow Temp
-      - Stop
-      supported_color_modes:
-      - color_temp
-      - hs
-      - rgb
-      color_mode: color_temp
-      brightness: 255
-      color_temp: 153
-      hs_color:
-      - 54.768
-      - 1.6
-      rgb_color:
-      - 255
-      - 254
-      - 250
-      xy_color:
-      - 0.326
-      - 0.333
-      flowing: false
-      music_mode: false
-      friendly_name: Xiaomi Desk Strip
-      supported_features: 44
-      state: 'on'
-    light.hue_color_lamp_left:
-      min_mireds: 153
-      max_mireds: 500
-      effect_list:
-      - colorloop
-      - random
-      supported_color_modes:
-      - color_temp
-      - hs
-      color_mode: color_temp
-      brightness: 255
-      color_temp: 153
-      hs_color:
-      - 54.768
-      - 1.6
-      rgb_color:
-      - 255
-      - 254
-      - 250
-      xy_color:
-      - 0.326
-      - 0.333
-      effect: none
-      friendly_name: Left Stand
-      supported_features: 63
-      state: 'on'
-    light.hue_color_lamp_right:
-      min_mireds: 153
-      max_mireds: 500
-      effect_list:
-      - colorloop
-      - random
-      supported_color_modes:
-      - color_temp
-      - hs
-      color_mode: color_temp
-      brightness: 255
-      color_temp: 153
-      hs_color:
-      - 54.768
-      - 1.6
-      rgb_color:
-      - 255
-      - 254
-      - 250
-      xy_color:
-      - 0.326
-      - 0.333
-      effect: none
-      friendly_name: Right Stand
-      supported_features: 63
-      state: 'on'
-    input_boolean.sleep_mode:
-      editable: false
-      friendly_name: Sleep
-      icon: mdi:power-sleep
-      state: 'off'
-    input_boolean.media_mode:
-      editable: false
-      friendly_name: Media
-      icon: mdi:presentation-play
-      state: 'off'
-    input_boolean.hip_mode:
-      editable: false
-      friendly_name: Hip
-      icon: mdi:boombox
-      state: 'off'
-    input_boolean.cozy_mode:
-      editable: false
-      friendly_name: Cozy
-      icon: mdi:fireplace
-      state: 'off'
-    input_select.current_scene:
-      options:
-      - Study
-      - Cozy
-      - Hip
-      - Cinema
-      - Sleep
-      editable: false
-      friendly_name: Current Scene
-      state: Study
-  icon: mdi:lead-pencil
-- id: scene_stand_cozy
-  name: Scene_Stand_Cozy
-  entities:
-    light.hue_color_lamp_left:
-      min_mireds: 153
-      max_mireds: 500
-      effect_list:
-      - colorloop
-      - random
-      supported_color_modes:
-      - color_temp
-      - hs
-      color_mode: color_temp
-      brightness: 255
-      color_temp: 390
-      hs_color:
-      - 28.711
-      - 70.253
-      rgb_color:
-      - 255
-      - 161
-      - 75
-      xy_color:
-      - 0.541
-      - 0.389
-      effect: none
-      friendly_name: Left Stand
-      supported_features: 63
-      state: 'on'
-    light.hue_color_lamp_right:
-      min_mireds: 153
-      max_mireds: 500
-      effect_list:
-      - colorloop
-      - random
-      supported_color_modes:
-      - color_temp
-      - hs
-      color_mode: color_temp
-      brightness: 255
-      color_temp: 390
-      hs_color:
-      - 28.711
-      - 70.253
-      rgb_color:
-      - 255
-      - 161
-      - 75
-      xy_color:
-      - 0.541
-      - 0.389
-      effect: none
-      friendly_name: Right Stand
-      supported_features: 63
-      state: 'on'
-    light.xiaomi_desk_strip:
-      min_mireds: 153
-      max_mireds: 588
-      effect_list:
-      - Strobe color
-      - Police
-      - Christmas
-      - RGB
-      - Random Loop
-      - Fast Random Loop
-      - LSD
-      - Slowdown
-      - Night Mode
-      - Date Night
-      - Movie
-      - Sunrise
-      - Sunset
-      - Romance
-      - Happy Birthday
-      - Disco
-      - Strobe epilepsy!
-      - Alarm
-      - Police2
-      - WhatsApp
-      - Facebook
-      - Twitter
-      - Home
-      - Candle Flicker
-      - Slow Temp
-      - Stop
-      supported_color_modes:
-      - color_temp
-      - hs
-      - rgb
-      color_mode: rgb
-      brightness: 255
-      hs_color:
-      - 29.811
-      - 62.353
-      rgb_color:
-      - 255
-      - 175
-      - 96
-      xy_color:
-      - 0.509
-      - 0.391
-      flowing: false
-      music_mode: false
-      friendly_name: Xiaomi Desk Strip
-      supported_features: 44
-      state: 'on'
-    light.desk_bulb:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - finish_effect
-      - stop_effect
-      supported_color_modes:
-      - xy
-      color_mode: xy
-      brightness: 255
-      hs_color:
-      - 29.497
-      - 70.196
-      rgb_color:
-      - 255
-      - 164
-      - 76
-      xy_color:
-      - 0.539
-      - 0.392
-      color:
-        x: 0.539
-        y: 0.392
-      linkquality: 102
-      update:
-        state: idle
-      update_available: false
-      friendly_name: Desk Bulb
-      supported_features: 61
-      state: 'on'
-    input_boolean.hip_mode:
-      editable: false
-      friendly_name: Hip
-      icon: mdi:boombox
-      state: 'off'
-    input_boolean.media_mode:
-      editable: false
-      friendly_name: Media
-      icon: mdi:presentation-play
-      state: 'off'
-    input_boolean.sleep_mode:
-      editable: false
-      friendly_name: Sleep
-      icon: mdi:power-sleep
-      state: 'off'
-    input_boolean.study_mode:
-      editable: false
-      friendly_name: Study
-      icon: mdi:lead-pencil
-      state: 'off'
-    input_select.current_scene:
-      options:
-      - Study
-      - Cozy
-      - Hip
-      - Cinema
-      - Sleep
-      editable: false
-      friendly_name: Current Scene
-      state: Cozy
-  icon: mdi:fireplace
-- id: scene_cozy_mode
-  name: Scene_Media
-  entities:
-    light.desk_bulb:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - finish_effect
-      - stop_effect
-      supported_color_modes:
-      - xy
-      color:
-        x: 0.326
-        y: 0.329
-      linkquality: 102
-      update:
-        state: idle
-      update_available: false
-      friendly_name: Desk Bulb
-      supported_features: 61
-      state: 'off'
-    light.xiaomi_desk_strip:
-      min_mireds: 153
-      max_mireds: 588
-      effect_list:
-      - Strobe color
-      - Police
-      - Christmas
-      - RGB
-      - Random Loop
-      - Fast Random Loop
-      - LSD
-      - Slowdown
-      - Night Mode
-      - Date Night
-      - Movie
-      - Sunrise
-      - Sunset
-      - Romance
-      - Happy Birthday
-      - Disco
-      - Strobe epilepsy!
-      - Alarm
-      - Police2
-      - WhatsApp
-      - Facebook
-      - Twitter
-      - Home
-      - Candle Flicker
-      - Slow Temp
-      - Stop
-      supported_color_modes:
-      - color_temp
-      - hs
-      - rgb
-      color_mode: hs
-      brightness: 51
-      hs_color:
-      - 210
-      - 84
-      rgb_color:
-      - 40
-      - 147
-      - 255
-      xy_color:
-      - 0.15
-      - 0.168
-      flowing: false
-      music_mode: false
-      friendly_name: Xiaomi Desk Strip
-      supported_features: 44
-      state: 'on'
-    switch.light_switch_l1:
-      linkquality: 115
-      state_l1: 'OFF'
-      state_l2: 'OFF'
-      friendly_name: Ceiling Light
-      state: 'off'
-    switch.light_switch_l2:
-      linkquality: 115
-      state_l1: 'OFF'
-      state_l2: 'OFF'
-      friendly_name: Balcony Light
-      state: 'off'
-    light.hue_color_lamp_left:
-      min_mireds: 153
-      max_mireds: 500
-      effect_list:
-      - colorloop
-      - random
-      supported_color_modes:
-      - color_temp
-      - hs
-      friendly_name: Left Stand
-      supported_features: 63
-      state: 'off'
-    light.hue_color_lamp_right:
-      min_mireds: 153
-      max_mireds: 500
-      effect_list:
-      - colorloop
-      - random
-      supported_color_modes:
-      - color_temp
-      - hs
-      friendly_name: Right Stand
-      supported_features: 63
-      state: 'off'
-    input_boolean.hip_mode:
-      editable: false
-      friendly_name: Hip
-      icon: mdi:boombox
-      state: 'off'
-    input_boolean.sleep_mode:
-      editable: false
-      friendly_name: Sleep
-      icon: mdi:power-sleep
-      state: 'off'
-    input_boolean.study_mode:
-      editable: false
-      friendly_name: Study
-      icon: mdi:lead-pencil
-      state: 'off'
-    input_boolean.cozy_mode:
-      editable: false
-      friendly_name: Cozy
-      icon: mdi:fireplace
-      state: 'off'
-    input_select.current_scene:
-      options:
-      - Study
-      - Cozy
-      - Hip
-      - Cinema
-      - Sleep
-      editable: false
-      friendly_name: Current Scene
-      state: Cinema
-  icon: mdi:presentation-play
-- id: scene_hip_mode
-  name: Scene_Hip
-  entities:
-    light.desk_bulb:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - finish_effect
-      - stop_effect
-      supported_color_modes:
-      - xy
-      color_mode: xy
-      brightness: 255
-      hs_color:
-      - 260.811
-      - 87.059
-      rgb_color:
-      - 110
-      - 33
-      - 255
-      xy_color:
-      - 0.193
-      - 0.071
-      color:
-        x: 0.193
-        y: 0.071
-      linkquality: 102
-      update:
-        state: idle
-      update_available: false
-      friendly_name: Desk Bulb
-      supported_features: 61
-      state: 'on'
-    light.xiaomi_desk_strip:
-      min_mireds: 153
-      max_mireds: 588
-      effect_list:
-      - Strobe color
-      - Police
-      - Christmas
-      - RGB
-      - Random Loop
-      - Fast Random Loop
-      - LSD
-      - Slowdown
-      - Night Mode
-      - Date Night
-      - Movie
-      - Sunrise
-      - Sunset
-      - Romance
-      - Happy Birthday
-      - Disco
-      - Strobe epilepsy!
-      - Alarm
-      - Police2
-      - WhatsApp
-      - Facebook
-      - Twitter
-      - Home
-      - Candle Flicker
-      - Slow Temp
-      - Stop
-      supported_color_modes:
-      - color_temp
-      - hs
-      - rgb
-      color_mode: hs
-      brightness: 255
-      hs_color:
-      - 299
-      - 95
-      rgb_color:
-      - 250
-      - 12
-      - 255
-      xy_color:
-      - 0.379
-      - 0.153
-      flowing: false
-      music_mode: false
-      friendly_name: Xiaomi Desk Strip
-      supported_features: 44
-      state: 'on'
-    light.hue_color_lamp_left:
-      min_mireds: 153
-      max_mireds: 500
-      effect_list:
-      - colorloop
-      - random
-      supported_color_modes:
-      - color_temp
-      - hs
-      color_mode: hs
-      brightness: 255
-      hs_color:
-      - 268.661
-      - 87.843
-      rgb_color:
-      - 138
-      - 31
-      - 255
-      xy_color:
-      - 0.23
-      - 0.089
-      effect: none
-      friendly_name: Left Stand
-      supported_features: 63
-      state: 'on'
-    light.hue_color_lamp_right:
-      min_mireds: 153
-      max_mireds: 500
-      effect_list:
-      - colorloop
-      - random
-      supported_color_modes:
-      - color_temp
-      - hs
-      color_mode: hs
-      brightness: 255
-      hs_color:
-      - 299.135
-      - 81.569
-      rgb_color:
-      - 252
-      - 46
-      - 255
-      xy_color:
-      - 0.379
-      - 0.16
-      effect: none
-      friendly_name: Right Stand
-      supported_features: 63
-      state: 'on'
-    switch.light_switch_l1:
-      linkquality: 115
-      state_l1: 'OFF'
-      state_l2: 'OFF'
-      friendly_name: Ceiling Light
-      state: 'off'
-    switch.light_switch_l2:
-      linkquality: 115
-      state_l1: 'OFF'
-      state_l2: 'OFF'
-      friendly_name: Balcony Light
-      state: 'off'
-    input_boolean.cozy_mode:
-      editable: false
-      friendly_name: Cozy
-      icon: mdi:fireplace
-      state: 'off'
-    input_boolean.media_mode:
-      editable: false
-      friendly_name: Media
-      icon: mdi:presentation-play
-      state: 'off'
-    input_boolean.sleep_mode:
-      editable: false
-      friendly_name: Sleep
-      icon: mdi:power-sleep
-      state: 'off'
-    input_boolean.study_mode:
-      editable: false
-      friendly_name: Study
-      icon: mdi:lead-pencil
-      state: 'off'
-    input_select.current_scene:
-      options:
-      - Study
-      - Cozy
-      - Hip
-      - Cinema
-      - Sleep
-      editable: false
-      friendly_name: Current Scene
-      state: Hip
-  icon: mdi:boombox
-- id: scene_sleep_mode
-  name: Scene_Sleep
-  entities:
-    light.desk_bulb:
-      min_mireds: 250
-      max_mireds: 454
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - finish_effect
-      - stop_effect
-      supported_color_modes:
-      - color_temp
-      - xy
-      color:
-        x: 0.326
-        y: 0.329
-      linkquality: 129
-      power_on_behavior:
-      update:
-        state: idle
-      update_available: false
-      friendly_name: Desk Bulb
-      supported_features: 63
-      state: 'off'
-    light.xiaomi_desk_strip:
-      min_mireds: 153
-      max_mireds: 588
-      effect_list:
-      - Strobe color
-      - Police
-      - Christmas
-      - RGB
-      - Random Loop
-      - Fast Random Loop
-      - LSD
-      - Slowdown
-      - Night Mode
-      - Date Night
-      - Movie
-      - Sunrise
-      - Sunset
-      - Romance
-      - Happy Birthday
-      - Disco
-      - Strobe epilepsy!
-      - Alarm
-      - Police2
-      - WhatsApp
-      - Facebook
-      - Twitter
-      - Home
-      - Candle Flicker
-      - Slow Temp
-      - Stop
-      supported_color_modes:
-      - color_temp
-      - hs
-      - rgb
-      flowing: false
-      music_mode: false
-      friendly_name: Xiaomi Desk Strip
-      supported_features: 44
-      state: 'off'
-    switch.light_switch_l1:
-      linkquality: 126
-      state_l1: 'OFF'
-      state_l2: 'OFF'
-      friendly_name: Ceiling Light
-      icon: mdi:wall-sconce-flat
-      state: 'off'
-    switch.light_switch_l2:
-      linkquality: 126
-      state_l1: 'OFF'
-      state_l2: 'OFF'
-      friendly_name: Balcony Light
-      icon: mdi:ceiling-light
-      state: 'off'
-    input_boolean.media_mode:
-      editable: false
-      friendly_name: Media
-      icon: mdi:presentation-play
-      state: 'off'
-    input_boolean.study_mode:
-      editable: false
-      friendly_name: Study
-      icon: mdi:lead-pencil
-      state: 'off'
-    input_boolean.hip_mode:
-      editable: false
-      friendly_name: Hip
-      icon: mdi:boombox
-      state: 'off'
-    input_boolean.cozy_mode:
-      editable: false
-      friendly_name: Cozy
-      icon: mdi:fireplace
-      state: 'off'
-    light.hue_color_lamp_left:
-      min_mireds: 153
-      max_mireds: 500
-      effect_list:
-      - colorloop
-      - random
-      supported_color_modes:
-      - color_temp
-      - hs
-      friendly_name: Left Stand
-      supported_features: 63
-      state: 'off'
-    light.hue_color_lamp_right:
-      min_mireds: 153
-      max_mireds: 500
-      effect_list:
-      - colorloop
-      - random
-      supported_color_modes:
-      - color_temp
-      - hs
-      friendly_name: Right Stand
-      supported_features: 63
-      state: 'off'
-    input_select.current_scene:
-      options:
-      - Study
-      - Cozy
-      - Hip
-      - Cinema
-      - Sleep
-      editable: false
-      friendly_name: Current Scene
-      state: Sleep
-  icon: mdi:power-sleep
-- id: scene_all_off
-  name: Scene_Shut Down
-  entities:
-    light.desk_bulb:
-      effect_list:
-      - blink
-      - breathe
-      - okay
-      - channel_change
-      - finish_effect
-      - stop_effect
-      supported_color_modes:
-      - hs
-      color:
-        x: 0.326
-        y: 0.329
-      linkquality: 97
-      update:
-        state: idle
-      update_available: false
-      friendly_name: Desk_Bulb
-      supported_features: 61
-      state: 'off'
-    light.xiaomi_desk_strip:
-      min_mireds: 153
-      max_mireds: 588
-      effect_list:
-      - Strobe color
-      - Police
-      - Christmas
-      - RGB
-      - Random Loop
-      - Fast Random Loop
-      - LSD
-      - Slowdown
-      - Night Mode
-      - Date Night
-      - Movie
-      - Sunrise
-      - Sunset
-      - Romance
-      - Happy Birthday
-      - Disco
-      - Strobe epilepsy!
-      - Alarm
-      - Police2
-      - WhatsApp
-      - Facebook
-      - Twitter
-      - Home
-      - Candle Flicker
-      - Slow Temp
-      - Stop
-      supported_color_modes:
-      - color_temp
-      - hs
-      - rgb
-      flowing: false
-      music_mode: false
-      friendly_name: Xiaomi Desk Strip
-      supported_features: 44
-      state: 'off'
-    switch.light_switch_l1:
-      linkquality: 94
-      state_l1: 'OFF'
-      state_l2: 'OFF'
-      friendly_name: Light_Switch_l1
-      state: 'off'
-    switch.light_switch_l2:
-      linkquality: 94
-      state_l1: 'OFF'
-      state_l2: 'OFF'
-      friendly_name: Light_Switch_l2
-      state: 'off'
-    light.hue_color_lamp_left:
-      min_mireds: 153
-      max_mireds: 500
-      effect_list:
-      - colorloop
-      - random
-      supported_color_modes:
-      - color_temp
-      - hs
-      friendly_name: Left Stand
-      supported_features: 63
-      state: 'off'
-    light.hue_color_lamp_right:
-      min_mireds: 153
-      max_mireds: 500
-      effect_list:
-      - colorloop
-      - random
-      supported_color_modes:
-      - color_temp
-      - hs
-      friendly_name: Right Stand
-      supported_features: 63
-      state: 'off'
-  icon: mdi:lightbulb-off
-- id: '1609473072091'
-  name: Scene_Shut_Modes_Down
-  entities:
-    input_boolean.media_mode:
-      editable: false
-      friendly_name: Media
-      icon: mdi:presentation-play
-      state: 'off'
-    input_boolean.sleep_mode:
-      editable: false
-      friendly_name: Sleep
-      icon: mdi:power-sleep
-      state: 'off'
-    input_boolean.study_mode:
-      editable: false
-      friendly_name: Study
-      icon: mdi:lead-pencil
-      state: 'off'
-    input_boolean.cozy_mode:
-      editable: false
-      friendly_name: Cozy
-      icon: mdi:fireplace
-      state: 'off'
-    input_boolean.hip_mode:
-      editable: false
-      friendly_name: Hip
-      icon: mdi:boombox
-      state: 'off'
-  icon: mdi:cancel
+scene:
+  - id: scene_study_mode
+    name: Scene_Study
+    entities:
+      light.desk_bulb:
+        effect_list:
+        - blink
+        - breathe
+        - okay
+        - channel_change
+        - finish_effect
+        - stop_effect
+        supported_color_modes:
+        - xy
+        color_mode: xy
+        brightness: 255
+        hs_color:
+        - 15
+        - 1.569
+        rgb_color:
+        - 255
+        - 252
+        - 251
+        xy_color:
+        - 0.326
+        - 0.329
+        color:
+          x: 0.326
+          y: 0.329
+        linkquality: 105
+        update:
+          state: idle
+        update_available: false
+        friendly_name: Desk Bulb
+        supported_features: 61
+        state: 'on'
+      light.xiaomi_desk_strip:
+        min_mireds: 153
+        max_mireds: 588
+        effect_list:
+        - Strobe color
+        - Police
+        - Christmas
+        - RGB
+        - Random Loop
+        - Fast Random Loop
+        - LSD
+        - Slowdown
+        - Night Mode
+        - Date Night
+        - Movie
+        - Sunrise
+        - Sunset
+        - Romance
+        - Happy Birthday
+        - Disco
+        - Strobe epilepsy!
+        - Alarm
+        - Police2
+        - WhatsApp
+        - Facebook
+        - Twitter
+        - Home
+        - Candle Flicker
+        - Slow Temp
+        - Stop
+        supported_color_modes:
+        - color_temp
+        - hs
+        - rgb
+        color_mode: color_temp
+        brightness: 255
+        color_temp: 153
+        hs_color:
+        - 54.768
+        - 1.6
+        rgb_color:
+        - 255
+        - 254
+        - 250
+        xy_color:
+        - 0.326
+        - 0.333
+        flowing: false
+        music_mode: false
+        friendly_name: Xiaomi Desk Strip
+        supported_features: 44
+        state: 'on'
+      light.hue_color_lamp_left:
+        min_mireds: 153
+        max_mireds: 500
+        effect_list:
+        - colorloop
+        - random
+        supported_color_modes:
+        - color_temp
+        - hs
+        color_mode: color_temp
+        brightness: 255
+        color_temp: 153
+        hs_color:
+        - 54.768
+        - 1.6
+        rgb_color:
+        - 255
+        - 254
+        - 250
+        xy_color:
+        - 0.326
+        - 0.333
+        effect: none
+        friendly_name: Left Stand
+        supported_features: 63
+        state: 'on'
+      light.hue_color_lamp_right:
+        min_mireds: 153
+        max_mireds: 500
+        effect_list:
+        - colorloop
+        - random
+        supported_color_modes:
+        - color_temp
+        - hs
+        color_mode: color_temp
+        brightness: 255
+        color_temp: 153
+        hs_color:
+        - 54.768
+        - 1.6
+        rgb_color:
+        - 255
+        - 254
+        - 250
+        xy_color:
+        - 0.326
+        - 0.333
+        effect: none
+        friendly_name: Right Stand
+        supported_features: 63
+        state: 'on'
+      input_boolean.sleep_mode:
+        editable: false
+        friendly_name: Sleep
+        icon: mdi:power-sleep
+        state: 'off'
+      input_boolean.media_mode:
+        editable: false
+        friendly_name: Media
+        icon: mdi:presentation-play
+        state: 'off'
+      input_boolean.hip_mode:
+        editable: false
+        friendly_name: Hip
+        icon: mdi:boombox
+        state: 'off'
+      input_boolean.cozy_mode:
+        editable: false
+        friendly_name: Cozy
+        icon: mdi:fireplace
+        state: 'off'
+      input_select.current_scene:
+        options:
+        - Study
+        - Cozy
+        - Hip
+        - Cinema
+        - Sleep
+        editable: false
+        friendly_name: Current Scene
+        state: Study
+    icon: mdi:lead-pencil
+  - id: scene_stand_cozy
+    name: Scene_Stand_Cozy
+    entities:
+      light.hue_color_lamp_left:
+        min_mireds: 153
+        max_mireds: 500
+        effect_list:
+        - colorloop
+        - random
+        supported_color_modes:
+        - color_temp
+        - hs
+        color_mode: color_temp
+        brightness: 255
+        color_temp: 390
+        hs_color:
+        - 28.711
+        - 70.253
+        rgb_color:
+        - 255
+        - 161
+        - 75
+        xy_color:
+        - 0.541
+        - 0.389
+        effect: none
+        friendly_name: Left Stand
+        supported_features: 63
+        state: 'on'
+      light.hue_color_lamp_right:
+        min_mireds: 153
+        max_mireds: 500
+        effect_list:
+        - colorloop
+        - random
+        supported_color_modes:
+        - color_temp
+        - hs
+        color_mode: color_temp
+        brightness: 255
+        color_temp: 390
+        hs_color:
+        - 28.711
+        - 70.253
+        rgb_color:
+        - 255
+        - 161
+        - 75
+        xy_color:
+        - 0.541
+        - 0.389
+        effect: none
+        friendly_name: Right Stand
+        supported_features: 63
+        state: 'on'
+      light.xiaomi_desk_strip:
+        min_mireds: 153
+        max_mireds: 588
+        effect_list:
+        - Strobe color
+        - Police
+        - Christmas
+        - RGB
+        - Random Loop
+        - Fast Random Loop
+        - LSD
+        - Slowdown
+        - Night Mode
+        - Date Night
+        - Movie
+        - Sunrise
+        - Sunset
+        - Romance
+        - Happy Birthday
+        - Disco
+        - Strobe epilepsy!
+        - Alarm
+        - Police2
+        - WhatsApp
+        - Facebook
+        - Twitter
+        - Home
+        - Candle Flicker
+        - Slow Temp
+        - Stop
+        supported_color_modes:
+        - color_temp
+        - hs
+        - rgb
+        color_mode: rgb
+        brightness: 255
+        hs_color:
+        - 29.811
+        - 62.353
+        rgb_color:
+        - 255
+        - 175
+        - 96
+        xy_color:
+        - 0.509
+        - 0.391
+        flowing: false
+        music_mode: false
+        friendly_name: Xiaomi Desk Strip
+        supported_features: 44
+        state: 'on'
+      light.desk_bulb:
+        effect_list:
+        - blink
+        - breathe
+        - okay
+        - channel_change
+        - finish_effect
+        - stop_effect
+        supported_color_modes:
+        - xy
+        color_mode: xy
+        brightness: 255
+        hs_color:
+        - 29.497
+        - 70.196
+        rgb_color:
+        - 255
+        - 164
+        - 76
+        xy_color:
+        - 0.539
+        - 0.392
+        color:
+          x: 0.539
+          y: 0.392
+        linkquality: 102
+        update:
+          state: idle
+        update_available: false
+        friendly_name: Desk Bulb
+        supported_features: 61
+        state: 'on'
+      input_boolean.hip_mode:
+        editable: false
+        friendly_name: Hip
+        icon: mdi:boombox
+        state: 'off'
+      input_boolean.media_mode:
+        editable: false
+        friendly_name: Media
+        icon: mdi:presentation-play
+        state: 'off'
+      input_boolean.sleep_mode:
+        editable: false
+        friendly_name: Sleep
+        icon: mdi:power-sleep
+        state: 'off'
+      input_boolean.study_mode:
+        editable: false
+        friendly_name: Study
+        icon: mdi:lead-pencil
+        state: 'off'
+      input_select.current_scene:
+        options:
+        - Study
+        - Cozy
+        - Hip
+        - Cinema
+        - Sleep
+        editable: false
+        friendly_name: Current Scene
+        state: Cozy
+    icon: mdi:fireplace
+  - id: scene_cozy_mode
+    name: Scene_Media
+    entities:
+      light.desk_bulb:
+        effect_list:
+        - blink
+        - breathe
+        - okay
+        - channel_change
+        - finish_effect
+        - stop_effect
+        supported_color_modes:
+        - xy
+        color:
+          x: 0.326
+          y: 0.329
+        linkquality: 102
+        update:
+          state: idle
+        update_available: false
+        friendly_name: Desk Bulb
+        supported_features: 61
+        state: 'off'
+      light.xiaomi_desk_strip:
+        min_mireds: 153
+        max_mireds: 588
+        effect_list:
+        - Strobe color
+        - Police
+        - Christmas
+        - RGB
+        - Random Loop
+        - Fast Random Loop
+        - LSD
+        - Slowdown
+        - Night Mode
+        - Date Night
+        - Movie
+        - Sunrise
+        - Sunset
+        - Romance
+        - Happy Birthday
+        - Disco
+        - Strobe epilepsy!
+        - Alarm
+        - Police2
+        - WhatsApp
+        - Facebook
+        - Twitter
+        - Home
+        - Candle Flicker
+        - Slow Temp
+        - Stop
+        supported_color_modes:
+        - color_temp
+        - hs
+        - rgb
+        color_mode: hs
+        brightness: 51
+        hs_color:
+        - 210
+        - 84
+        rgb_color:
+        - 40
+        - 147
+        - 255
+        xy_color:
+        - 0.15
+        - 0.168
+        flowing: false
+        music_mode: false
+        friendly_name: Xiaomi Desk Strip
+        supported_features: 44
+        state: 'on'
+      switch.light_switch_l1:
+        linkquality: 115
+        state_l1: 'OFF'
+        state_l2: 'OFF'
+        friendly_name: Ceiling Light
+        state: 'off'
+      switch.light_switch_l2:
+        linkquality: 115
+        state_l1: 'OFF'
+        state_l2: 'OFF'
+        friendly_name: Balcony Light
+        state: 'off'
+      light.hue_color_lamp_left:
+        min_mireds: 153
+        max_mireds: 500
+        effect_list:
+        - colorloop
+        - random
+        supported_color_modes:
+        - color_temp
+        - hs
+        friendly_name: Left Stand
+        supported_features: 63
+        state: 'off'
+      light.hue_color_lamp_right:
+        min_mireds: 153
+        max_mireds: 500
+        effect_list:
+        - colorloop
+        - random
+        supported_color_modes:
+        - color_temp
+        - hs
+        friendly_name: Right Stand
+        supported_features: 63
+        state: 'off'
+      input_boolean.hip_mode:
+        editable: false
+        friendly_name: Hip
+        icon: mdi:boombox
+        state: 'off'
+      input_boolean.sleep_mode:
+        editable: false
+        friendly_name: Sleep
+        icon: mdi:power-sleep
+        state: 'off'
+      input_boolean.study_mode:
+        editable: false
+        friendly_name: Study
+        icon: mdi:lead-pencil
+        state: 'off'
+      input_boolean.cozy_mode:
+        editable: false
+        friendly_name: Cozy
+        icon: mdi:fireplace
+        state: 'off'
+      input_select.current_scene:
+        options:
+        - Study
+        - Cozy
+        - Hip
+        - Cinema
+        - Sleep
+        editable: false
+        friendly_name: Current Scene
+        state: Cinema
+    icon: mdi:presentation-play
+  - id: scene_hip_mode
+    name: Scene_Hip
+    entities:
+      light.desk_bulb:
+        effect_list:
+        - blink
+        - breathe
+        - okay
+        - channel_change
+        - finish_effect
+        - stop_effect
+        supported_color_modes:
+        - xy
+        color_mode: xy
+        brightness: 255
+        hs_color:
+        - 260.811
+        - 87.059
+        rgb_color:
+        - 110
+        - 33
+        - 255
+        xy_color:
+        - 0.193
+        - 0.071
+        color:
+          x: 0.193
+          y: 0.071
+        linkquality: 102
+        update:
+          state: idle
+        update_available: false
+        friendly_name: Desk Bulb
+        supported_features: 61
+        state: 'on'
+      light.xiaomi_desk_strip:
+        min_mireds: 153
+        max_mireds: 588
+        effect_list:
+        - Strobe color
+        - Police
+        - Christmas
+        - RGB
+        - Random Loop
+        - Fast Random Loop
+        - LSD
+        - Slowdown
+        - Night Mode
+        - Date Night
+        - Movie
+        - Sunrise
+        - Sunset
+        - Romance
+        - Happy Birthday
+        - Disco
+        - Strobe epilepsy!
+        - Alarm
+        - Police2
+        - WhatsApp
+        - Facebook
+        - Twitter
+        - Home
+        - Candle Flicker
+        - Slow Temp
+        - Stop
+        supported_color_modes:
+        - color_temp
+        - hs
+        - rgb
+        color_mode: hs
+        brightness: 255
+        hs_color:
+        - 299
+        - 95
+        rgb_color:
+        - 250
+        - 12
+        - 255
+        xy_color:
+        - 0.379
+        - 0.153
+        flowing: false
+        music_mode: false
+        friendly_name: Xiaomi Desk Strip
+        supported_features: 44
+        state: 'on'
+      light.hue_color_lamp_left:
+        min_mireds: 153
+        max_mireds: 500
+        effect_list:
+        - colorloop
+        - random
+        supported_color_modes:
+        - color_temp
+        - hs
+        color_mode: hs
+        brightness: 255
+        hs_color:
+        - 268.661
+        - 87.843
+        rgb_color:
+        - 138
+        - 31
+        - 255
+        xy_color:
+        - 0.23
+        - 0.089
+        effect: none
+        friendly_name: Left Stand
+        supported_features: 63
+        state: 'on'
+      light.hue_color_lamp_right:
+        min_mireds: 153
+        max_mireds: 500
+        effect_list:
+        - colorloop
+        - random
+        supported_color_modes:
+        - color_temp
+        - hs
+        color_mode: hs
+        brightness: 255
+        hs_color:
+        - 299.135
+        - 81.569
+        rgb_color:
+        - 252
+        - 46
+        - 255
+        xy_color:
+        - 0.379
+        - 0.16
+        effect: none
+        friendly_name: Right Stand
+        supported_features: 63
+        state: 'on'
+      switch.light_switch_l1:
+        linkquality: 115
+        state_l1: 'OFF'
+        state_l2: 'OFF'
+        friendly_name: Ceiling Light
+        state: 'off'
+      switch.light_switch_l2:
+        linkquality: 115
+        state_l1: 'OFF'
+        state_l2: 'OFF'
+        friendly_name: Balcony Light
+        state: 'off'
+      input_boolean.cozy_mode:
+        editable: false
+        friendly_name: Cozy
+        icon: mdi:fireplace
+        state: 'off'
+      input_boolean.media_mode:
+        editable: false
+        friendly_name: Media
+        icon: mdi:presentation-play
+        state: 'off'
+      input_boolean.sleep_mode:
+        editable: false
+        friendly_name: Sleep
+        icon: mdi:power-sleep
+        state: 'off'
+      input_boolean.study_mode:
+        editable: false
+        friendly_name: Study
+        icon: mdi:lead-pencil
+        state: 'off'
+      input_select.current_scene:
+        options:
+        - Study
+        - Cozy
+        - Hip
+        - Cinema
+        - Sleep
+        editable: false
+        friendly_name: Current Scene
+        state: Hip
+    icon: mdi:boombox
+  - id: scene_sleep_mode
+    name: Scene_Sleep
+    entities:
+      light.desk_bulb:
+        min_mireds: 250
+        max_mireds: 454
+        effect_list:
+        - blink
+        - breathe
+        - okay
+        - channel_change
+        - finish_effect
+        - stop_effect
+        supported_color_modes:
+        - color_temp
+        - xy
+        color:
+          x: 0.326
+          y: 0.329
+        linkquality: 129
+        power_on_behavior:
+        update:
+          state: idle
+        update_available: false
+        friendly_name: Desk Bulb
+        supported_features: 63
+        state: 'off'
+      light.xiaomi_desk_strip:
+        min_mireds: 153
+        max_mireds: 588
+        effect_list:
+        - Strobe color
+        - Police
+        - Christmas
+        - RGB
+        - Random Loop
+        - Fast Random Loop
+        - LSD
+        - Slowdown
+        - Night Mode
+        - Date Night
+        - Movie
+        - Sunrise
+        - Sunset
+        - Romance
+        - Happy Birthday
+        - Disco
+        - Strobe epilepsy!
+        - Alarm
+        - Police2
+        - WhatsApp
+        - Facebook
+        - Twitter
+        - Home
+        - Candle Flicker
+        - Slow Temp
+        - Stop
+        supported_color_modes:
+        - color_temp
+        - hs
+        - rgb
+        flowing: false
+        music_mode: false
+        friendly_name: Xiaomi Desk Strip
+        supported_features: 44
+        state: 'off'
+      switch.light_switch_l1:
+        linkquality: 126
+        state_l1: 'OFF'
+        state_l2: 'OFF'
+        friendly_name: Ceiling Light
+        icon: mdi:wall-sconce-flat
+        state: 'off'
+      switch.light_switch_l2:
+        linkquality: 126
+        state_l1: 'OFF'
+        state_l2: 'OFF'
+        friendly_name: Balcony Light
+        icon: mdi:ceiling-light
+        state: 'off'
+      input_boolean.media_mode:
+        editable: false
+        friendly_name: Media
+        icon: mdi:presentation-play
+        state: 'off'
+      input_boolean.study_mode:
+        editable: false
+        friendly_name: Study
+        icon: mdi:lead-pencil
+        state: 'off'
+      input_boolean.hip_mode:
+        editable: false
+        friendly_name: Hip
+        icon: mdi:boombox
+        state: 'off'
+      input_boolean.cozy_mode:
+        editable: false
+        friendly_name: Cozy
+        icon: mdi:fireplace
+        state: 'off'
+      light.hue_color_lamp_left:
+        min_mireds: 153
+        max_mireds: 500
+        effect_list:
+        - colorloop
+        - random
+        supported_color_modes:
+        - color_temp
+        - hs
+        friendly_name: Left Stand
+        supported_features: 63
+        state: 'off'
+      light.hue_color_lamp_right:
+        min_mireds: 153
+        max_mireds: 500
+        effect_list:
+        - colorloop
+        - random
+        supported_color_modes:
+        - color_temp
+        - hs
+        friendly_name: Right Stand
+        supported_features: 63
+        state: 'off'
+      input_select.current_scene:
+        options:
+        - Study
+        - Cozy
+        - Hip
+        - Cinema
+        - Sleep
+        editable: false
+        friendly_name: Current Scene
+        state: Sleep
+    icon: mdi:power-sleep
+  - id: scene_all_off
+    name: Scene_Shut Down
+    entities:
+      light.desk_bulb:
+        effect_list:
+        - blink
+        - breathe
+        - okay
+        - channel_change
+        - finish_effect
+        - stop_effect
+        supported_color_modes:
+        - hs
+        color:
+          x: 0.326
+          y: 0.329
+        linkquality: 97
+        update:
+          state: idle
+        update_available: false
+        friendly_name: Desk_Bulb
+        supported_features: 61
+        state: 'off'
+      light.xiaomi_desk_strip:
+        min_mireds: 153
+        max_mireds: 588
+        effect_list:
+        - Strobe color
+        - Police
+        - Christmas
+        - RGB
+        - Random Loop
+        - Fast Random Loop
+        - LSD
+        - Slowdown
+        - Night Mode
+        - Date Night
+        - Movie
+        - Sunrise
+        - Sunset
+        - Romance
+        - Happy Birthday
+        - Disco
+        - Strobe epilepsy!
+        - Alarm
+        - Police2
+        - WhatsApp
+        - Facebook
+        - Twitter
+        - Home
+        - Candle Flicker
+        - Slow Temp
+        - Stop
+        supported_color_modes:
+        - color_temp
+        - hs
+        - rgb
+        flowing: false
+        music_mode: false
+        friendly_name: Xiaomi Desk Strip
+        supported_features: 44
+        state: 'off'
+      switch.light_switch_l1:
+        linkquality: 94
+        state_l1: 'OFF'
+        state_l2: 'OFF'
+        friendly_name: Light_Switch_l1
+        state: 'off'
+      switch.light_switch_l2:
+        linkquality: 94
+        state_l1: 'OFF'
+        state_l2: 'OFF'
+        friendly_name: Light_Switch_l2
+        state: 'off'
+      light.hue_color_lamp_left:
+        min_mireds: 153
+        max_mireds: 500
+        effect_list:
+        - colorloop
+        - random
+        supported_color_modes:
+        - color_temp
+        - hs
+        friendly_name: Left Stand
+        supported_features: 63
+        state: 'off'
+      light.hue_color_lamp_right:
+        min_mireds: 153
+        max_mireds: 500
+        effect_list:
+        - colorloop
+        - random
+        supported_color_modes:
+        - color_temp
+        - hs
+        friendly_name: Right Stand
+        supported_features: 63
+        state: 'off'
+    icon: mdi:lightbulb-off
+  - id: '1609473072091'
+    name: Scene_Shut_Modes_Down
+    entities:
+      input_boolean.media_mode:
+        editable: false
+        friendly_name: Media
+        icon: mdi:presentation-play
+        state: 'off'
+      input_boolean.sleep_mode:
+        editable: false
+        friendly_name: Sleep
+        icon: mdi:power-sleep
+        state: 'off'
+      input_boolean.study_mode:
+        editable: false
+        friendly_name: Study
+        icon: mdi:lead-pencil
+        state: 'off'
+      input_boolean.cozy_mode:
+        editable: false
+        friendly_name: Cozy
+        icon: mdi:fireplace
+        state: 'off'
+      input_boolean.hip_mode:
+        editable: false
+        friendly_name: Hip
+        icon: mdi:boombox
+        state: 'off'
+    icon: mdi:cancel

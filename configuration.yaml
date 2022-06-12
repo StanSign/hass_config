@@ -1,18 +1,13 @@
 homeassistant:
+  name: StanSign
   unit_system: metric
   temperature_unit: C
   currency: KRW
-  customize: !include ./include/customize.yaml
+  packages: !include_dir_named include
   allowlist_external_dirs:
     - /config
     
 default_config:
-  
-http:
-  use_x_forwarded_for: true
-  trusted_proxies:
-    - !secret ha_address
-    - 172.30.33.0/24
 
 lovelace:
   mode: yaml
@@ -35,43 +30,24 @@ lovelace:
       {url: /local/file-loader.js,                                                          type: module},
       {url: /local/fonts.css,                                                               type: css   } ]
 
-# includes
-frontend:
-  themes: !include ./include/themes.yaml
-
-automation: !include ./automations.yaml
-group: !include ./include/group.yaml
-input_boolean: !include ./include/input_boolean.yaml
-input_select: !include ./include/input_select.yaml
-scene: !include ./scenes.yaml
-script: !include ./scripts.yaml
-sensor: !include ./include/sensor.yaml
-switch: !include ./include/switch.yaml
-template: !include ./include/template.yaml
-fan: !include ./include/fan.yaml
-
-webostv:
-  host: !secret  living_room_tv_ip_addr
-  name: Living Room TV
-  turn_on_action:
-    service: wake_on_lan.send_magic_packet
-    data:
-      mac: !secret living_room_tv_mac_addr
-
 logger:
   default: warning
   logs:
-    homeassistant.components.rest_command: fatal
+    homeassistant.helpers.entity: fatal
 
 recorder:
   db_url: !secret recorder_db_url
+  purge_keep_days: 5
+  commit_interval: 30
+  exclude:
+    entity_globs:
+      - sensor.browser_*
 
-# Cloud
-cloud:
-
-discovery:
-  ignore:
-    - yeelight
+person:
+  - name: ChangJun
+    id: changjun
+    device_trackers:
+      - device_tracker.stansign_iphone
 
 yeelight:
   devices:
@@ -79,13 +55,8 @@ yeelight:
       name: Xiaomi Desk Strip
       save_on_change: true
 
-wake_on_lan:
-
 browser_mod:
+  prefix: browser_
 
 tts:
   - platform: google_translate
-  - platform: kakao_tts
-    api_key: !secret kakao_api
-    voice: 'MAN_DIALOG_BRIGHT'
-    volume: 'soft'
