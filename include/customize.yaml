@@ -1,0 +1,57 @@
+####################################################
+#                                                  #
+#                    CUSTOMIZE                     #
+#                                                  #
+####################################################
+
+# light
+switch.light_switch_l1:
+  friendly_name: Ceiling Light
+switch.light_switch_l2:
+  friendly_name: Balcony Light
+
+# sensor
+
+# battery
+sensor.door_sensor_battery:
+  friendly_name: Door Sensor Battery
+sensor.motion_sensor_battery:
+  friendly_name: Motion Sensor Battery
+sensor.pressure_balcony_battery:
+  friendly_name: Balcony Pressure Sensor Battery
+
+# sidebar_information.yaml
+sensor.database:
+  icon: mdi:database
+sensor.home_assistant_log:
+  friendly_name: Log File
+  icon: mdi:file-document
+sensor.uptime:
+  friendly_name: Last Restart
+  icon: mdi:update
+sensor.processor_temperature:
+  friendly_name: Processor Temperature
+sensor.processor_use_percent:
+  icon: mdi:chip
+sensor.network_throughput_out_eth0:
+  icon: mdi:arrow-up-bold
+sensor.network_throughput_in_eth0:
+  icon: mdi:arrow-down-bold
+
+binary_sensor.pressure_pillow_contact:
+  icon: mdi:bed
+cover.curtain:
+  device_class: curtain
+  icon: mdi:window-open-variant
+sensor.network_in_eth0:
+  friendly_name: In
+  unit_of_measurement: MiB
+sensor.network_out_eth0:
+  friendly_name: Out
+  unit_of_measurement: MiB
+media_player.spotify_icangjun:
+  friendly_name: Spotify
+
+# stock sensors
+sensor.tesla:
+  entity_picture: /local/icon/tesla.png

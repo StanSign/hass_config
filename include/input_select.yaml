@@ -1,0 +1,13 @@
+current_scene:
+  name: Current Scene
+  options:
+    - Study
+    - Cozy
+    - Hip
+    - Cinema
+    - Sleep
+
+conditional_media:
+  initial: Living Room
+  options:
+    - Living Room

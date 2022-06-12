@@ -1,0 +1,296 @@
+button_card_templates: !include button_card_templates.yaml
+
+views:
+  - type: custom:grid-layout
+    path: 0
+    layout:
+      #default
+      grid-gap: var(--custom-layout-card-padding)
+      grid-template-columns: repeat(4, 1fr) 0
+      grid-template-rows: 0 repeat(2, fit-content(100%)) 0
+      grid-template-areas: |
+        "sidebar  .           .        .        ."
+        "sidebar  home        room     things1  ."
+        "sidebar  media       balcony  things2  ."
+        "sidebar  .           .        .        ."
+      mediaquery:
+        #phone
+        "(max-width: 800px)":
+          grid-gap: calc(var(--custom-layout-card-padding) * 1.5)
+          grid-template-columns: 0 repeat(2, 1fr) 0
+          grid-template-rows: 0 repeat(4, fit-content(100%)) 0fr
+          grid-template-areas: |
+            ".  .           .        ."
+            ".  sidebar     sidebar  ."
+            ".  home        media    ."
+            ".  room        balcony  ."
+            ".  things1     things2  ."
+            ".  .           .        ."
+        #portrait
+        "(max-width: 1200px)":
+          grid-gap: var(--custom-layout-card-padding)
+          grid-template-columns: repeat(2, 1fr) 0
+          grid-template-rows: 0 repeat(2, fit-content(100%)) 0fr
+          grid-template-areas: |
+            "sidebar  .           .       ."
+            "sidebar  home        media   ."
+            "sidebar  room        balcony ."
+            "sidebar  things1     things2 ."
+            "sidebar  .           .       ."
+
+    cards:
+      - type: custom:button-card
+
+      #################################################
+      #                                               #
+      #                    SIDEBAR                    #
+      #                                               #
+      #################################################
+
+      - type: vertical-stack
+        view_layout:
+          grid-area: sidebar
+        cards:
+          - type: custom:button-card
+            entity: sensor.template_sidebar
+            template: sidebar_template
+
+          - type: grid
+            cards:
+              - type: button
+                icon: mdi:swap-horizontal-circle-outline
+                tap_action: !include ./popup/sidebar_stock.yaml
+                hold_action:
+                  action: none
+              - type: button
+                icon: mdi:information-outline
+                tap_action: !include ./popup/sidebar_information.yaml
+                hold_action:
+                  action: none
+              - type: button
+                icon: mdi:arrow-up-bold-circle-outline
+                tap_action: !include ./popup/sidebar_update.yaml
+                hold_action:
+                  action: none
+
+      #################################################
+      #                                               #
+      #                      HOME                     #
+      #                                               #
+      #################################################
+
+      - type: grid
+        title: Home
+        view_layout:
+          grid-area: home
+        columns: 2
+        cards:
+          - type: custom:button-card
+            entity: sensor.presence_sensor
+            name: Presence
+            hold_action:
+              action: none
+            template:
+              - sensor
+              - icon_presence
+
+          - type: custom:button-card
+            entity: sensor.presence_sensor
+            name: Scenes
+            tap_action: !include ./popup/sidebar_scene.yaml
+            hold_action:
+              action: none
+            template:
+              - scene_button
+
+          - type: custom:button-card
+            entity: switch.room_lights
+            name: Lights
+            template:
+              - base
+              - icon_toggle
+
+          - type: custom:button-card
+            entity: climate.thermostat
+            name: Thermostat
+            template:
+              - base
+
+      #################################################
+      #                                               #
+      #                      ROOM                     #
+      #                                               #
+      #################################################
+
+      - type: grid
+        title: Room
+        view_layout:
+          grid-area: room
+        columns: 2
+        cards:
+          - type: custom:button-card
+            entity: switch.light_switch_l1
+            name: Ceiling
+            template:
+              - light
+              - icon_ceiling
+
+          - type: custom:button-card
+            entity: light.hue_color_lamp_left
+            name: Stands
+            tap_action:
+              action: call-service
+              service: switch.toggle
+              service_data:
+                entity_id: switch.stand_lights
+            hold_action: !include ./popup/stands.yaml
+            template:
+              - base
+              - icon_lamp
+
+          - type: custom:button-card
+            entity: light.desk_bulb
+            name: Desk Bulb
+            template:
+              - light
+              - icon_hue
+
+          - type: custom:button-card
+            entity: light.xiaomi_desk_strip
+            name: Desk Strip
+            template:
+              - light
+              - icon_strip
+
+      #################################################
+      #                                               #
+      #                     THINGS                    #
+      #                                               #
+      #################################################
+
+      - type: grid
+        title: Things
+        view_layout:
+          grid-area: things1
+        columns: 2
+        cards:
+          - type: custom:button-card
+            entity: fan.xiaomi_air_humidifier
+            name: Humidifier
+            template:
+              - base
+              - loader
+              - icon_fan
+
+      #################################################
+      #                                               #
+      #                     MEDIA                     #
+      #                                               #
+      #################################################
+
+      - type: grid
+        title: Media
+        view_layout:
+          grid-area: media
+        columns: 1
+        cards:
+          - type: custom:swipe-card
+            start_card: 1
+            parameters:
+              roundLengths: true
+              effect: coverflow
+              speed: 650
+              spaceBetween: 20
+              threshold: 7
+              coverflowEffect:
+                rotate: 80
+                depth: 300
+            cards:
+              - type: horizontal-stack
+                cards:
+                  - type: conditional
+                    conditions:
+                      - entity: input_select.conditional_media
+                        state: Living Room
+                    card:
+                      type: custom:button-card
+                      entity: media_player.living_room
+                      template:
+                        - conditional_media
+                        - icon_apple_tv
+
+              - type: grid
+                columns: 2
+                cards:
+                  - type: custom:button-card
+                    entity: media_player.living_room_tv_2
+                    name: TV
+                    template:
+                      - base
+                      - loader
+                      - icon_tv
+
+                  - type: custom:button-card
+                    entity: media_player.living_room
+                    name: Apple TV
+                    template:
+                      - media
+                      - icon_apple_tv
+
+      #################################################
+      #                                               #
+      #                    BALCONY                    #
+      #                                               #
+      #################################################
+
+      - type: grid
+        title: Balcony
+        view_layout:
+          grid-area: balcony
+        columns: 2
+        cards:
+          - type: custom:button-card
+            entity: switch.light_switch_l2
+            name: Balcony
+            template:
+              - light
+              - icon_ceiling
+
+          - type: custom:button-card
+            entity: light.balcony_stand
+            name: Lamp
+            template:
+              - light
+              - icon_lamp
+
+          - type: custom:button-card
+            entity: switch.balcony_line_lights
+            name: Line Lights
+            template:
+              - base
+              - icon_hue
+
+      #################################################
+      #                                               #
+      #                    THINGS                     #
+      #                                               #
+      #################################################
+
+      - type: grid
+        title: Things
+        view_layout:
+          grid-area: things2
+        columns: 2
+        cards:
+          - type: custom:button-card
+            entity: sensor.curtain
+            name: Curtain
+            template:
+              - curtain
+              - icon_curtain
+
+      #################################################
+      #                                               #
+      #                    FOOTER                     #
+      #                                               #
+      #################################################

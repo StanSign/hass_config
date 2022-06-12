@@ -1,0 +1,47 @@
+action: fire-dom-event
+browser_mod:
+  command: popup
+  title: Stands
+  style:
+    .: |
+      :host .content {
+        width: 45em;
+        height: 100%
+      }
+    hui-grid-card:
+      $: |
+        button-card:nth-child(2), button-card:nth-child(4) {
+          margin: 0.5em 0 3em 0.4em;
+        }
+        #root {
+          grid-gap: 0 !important;
+        }
+  card:
+    type: custom:layout-card
+    layout_type: custom:grid-layout
+    layout:
+      grid-gap: var(--custom-layout-card-padding)
+      grid-template-columns: 0 repeat(2, 1fr) 0
+      grid-template-rows: 0 repeat(1, fit-content(100%)) 0fr
+      grid-template-areas: |
+        ".   .      .      ."
+        ".   left   right  ."
+        ".   .      .      ."
+    cards:
+      - type: custom:button-card
+        view_layout:
+          grid-area: left
+        entity: light.hue_color_lamp_left
+        name: Left
+        template:
+          - light
+          - icon_hue
+      
+      - type: custom:button-card
+        view_layout:
+          grid-area: right
+        entity: light.hue_color_lamp_right
+        name: Right
+        template:
+          - light
+          - icon_hue

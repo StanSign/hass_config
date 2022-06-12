@@ -1,0 +1,66 @@
+curtain_control:
+  alias: Curtain Control
+  sequence:
+    - choose:
+      - conditions:
+          - condition: state
+            entity_id: sensor.curtain
+            state: 'Closed'
+        sequence:
+          - service: cover.close_cover
+            entity_id: cover.curtain
+      - conditions:
+          - condition: state
+            entity_id: sensor.curtain
+            state: 'Open'
+        sequence:
+          - service: cover.open_cover
+            entity_id: cover.curtain
+      default: []
+  mode: single
+  icon: mdi:window-open-variant
+
+thermostat_control:
+  alias: Thermostat Control
+  sequence:
+  - choose:
+    - conditions:
+      - condition: numeric_state
+        entity_id: sensor.naver_weather_nowtemp_1
+        below: '5'
+      - condition: numeric_state
+        entity_id: sensor.air_monitor_temperature
+        below: '25'
+      sequence:
+      - service: climate.set_temperature
+        target:
+          entity_id: climate.thermostat
+        data:
+          temperature: 23
+          hvac_mode: heat
+    default: []
+  mode: single
+  icon: mdi:thermostat
+
+humidifier_control:
+  alias: Humidifier Control
+  sequence:
+  - choose:
+    - conditions:
+      - condition: numeric_state
+        entity_id: sensor.air_monitor_humidity
+        below: '55'
+      sequence:
+      - service: fan.turn_on
+        target:
+          entity_id: fan.xiaomi_air_humidifier
+    - conditions:
+      - condition: numeric_state
+        entity_id: sensor.air_monitor_humidity
+        above: '60'
+      sequence:
+      - service: fan.turn_off
+        target:
+          entity_id: fan.xiaomi_air_humidifier
+  mode: single
+  icon: mdi:fan

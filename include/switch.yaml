@@ -1,0 +1,47 @@
+- platform: template
+  switches:
+    curtain:
+      friendly_name: Curtain
+      icon_template: mdi:window-open-variant
+      value_template: "{{ is_state('sensor.curtain', 'Open') }}"
+      turn_on:
+        - service: input_boolean.turn_on
+          entity_id: input_boolean.curtain
+        - service: input_boolean.turn_on
+          entity_id: input_boolean.curtain_clicked
+        - service: script.curtain_control
+      turn_off:
+        - service: input_boolean.turn_on
+          entity_id: input_boolean.curtain
+        - service: input_boolean.turn_off
+          entity_id: input_boolean.curtain_clicked
+        - service: script.curtain_control
+
+    stand_lights:
+      friendly_name: Stand Lights
+      icon_template: mdi:lamps
+      value_template: "{{ is_state('light.hue_color_lamp_left', 'on') }}"
+      turn_on:
+        service: light.turn_on
+        data:
+          entity_id:
+            - light.hue_color_lamp_left
+            - light.hue_color_lamp_right
+      turn_off:
+        service: light.turn_off
+        data:
+          entity_id:
+            - light.hue_color_lamp_left
+            - light.hue_color_lamp_right  
+
+
+    room_lights:
+      friendly_name: Room Lights
+      icon_template: mdi:lightbulb-multiple
+      value_template: "{{ is_state('input_boolean.sleep_mode', 'off') }}"
+      turn_on:
+        - service: input_boolean.turn_on
+          entity_id: input_boolean.study_mode
+      turn_off:
+        - service: input_boolean.turn_on
+          entity_id: input_boolean.sleep_mode

@@ -1,0 +1,94 @@
+action: fire-dom-event
+browser_mod:
+  command: popup
+  title: Stocks
+  style:
+    .: |
+      :host .content {
+        width: 100em;
+        height: 100%
+      }
+    hui-grid-card:
+      $: |
+        button-card:nth-child(2), button-card:nth-child(4) {
+          margin: 0.5em 3em 3em 0.4em;
+        }
+        #root {
+          grid-gap: 0 !important;
+        }
+  card:
+    type: custom:layout-card
+    layout_type: custom:grid-layout
+    layout:
+      grid-gap: var(--custom-layout-card-padding)
+      grid-template-columns: 0 repeat(2, 1fr) 0
+      grid-template-rows: 0 repeat(2, fit-content(100%)) 0fr
+      grid-template-areas: |
+        ".   .      .      ."
+        ".   lcid   nvda   ."
+        ".   tsla   appl   ."
+        ".   .      .      ."
+    cards:
+      - type: custom:mini-graph-card
+        view_layout:
+          grid-area: lcid
+        entities:
+          - sensor.lucid_group
+        graph: line
+        hour24: false
+        hours_to_show: 24
+        name: Lucid Group
+        line_width: 2
+        line_color: '#c2b299'
+        show:
+          extrema: true
+          icon: false
+          name: true
+
+      - type: custom:mini-graph-card
+        view_layout:
+          grid-area: nvda
+        entities:
+          - sensor.nvidia
+        graph: line
+        hour24: false
+        hours_to_show: 24
+        name: NVIDIA
+        line_width: 2
+        line_color: '#74b71b'
+        show:
+          extrema: true
+          icon: false
+          name: true
+
+      - type: custom:mini-graph-card
+        view_layout:
+          grid-area: tsla
+        entities:
+          - sensor.tesla
+        graph: line
+        hour24: false
+        hours_to_show: 24
+        name: Tesla
+        line_width: 2
+        line_color: '#e91b22'
+        show:
+          extrema: true
+          icon: false
+          name: true
+
+      - type: custom:mini-graph-card
+        view_layout:
+          grid-area: appl
+        entities:
+          - sensor.apple
+        graph: line
+        hour24: false
+        hours_to_show: 24
+        name: Apple
+        line_width: 2
+        line_color: '#D6D6D6'
+        show:
+          extrema: true
+          icon: false
+          name: true

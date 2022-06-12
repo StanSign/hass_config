@@ -1,0 +1,349 @@
+- id: dba5c4d66f6d4398a1d956ac19af17d7
+  alias: Study
+  trigger:
+  - platform: state
+    entity_id: input_boolean.study_mode
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.home_mode
+    state: 'on'
+  action:
+  - scene: scene.study
+  mode: single
+- id: 70907da9527e4665b0164e1355ce65af
+  alias: Media
+  trigger:
+  - platform: state
+    entity_id: input_boolean.media_mode
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.home_mode
+    state: 'on'
+  action:
+  - scene: scene.media
+  mode: single
+- id: 524cc34f1c104db3bddbbba9f7a5fc57
+  alias: Sleep
+  trigger:
+  - platform: state
+    entity_id: input_boolean.sleep_mode
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.home_mode
+    state: 'on'
+  action:
+  - scene: scene.sleep
+  mode: single
+- id: a70d6bff65bb40d0b60f66ff13517c89
+  alias: Cozy
+  trigger:
+  - platform: state
+    entity_id: input_boolean.cozy_mode
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.home_mode
+    state: 'on'
+  action:
+  - scene: scene.cozy
+  mode: single
+- id: c3dff27ad2d24196af15b91d647c50b9
+  alias: Hip
+  trigger:
+  - platform: state
+    entity_id: input_boolean.hip_mode
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.home_mode
+    state: 'on'
+  action:
+  - scene: scene.hip
+  mode: single
+- id: f6b0611c0e9e42a8b668a68714323a25
+  alias: Leaving Home
+  description: Automation when you're leaving home (determined by Apple Home Service)
+  trigger:
+  - platform: state
+    entity_id: input_boolean.home_mode
+    to: 'off'
+  action:
+  - scene: scene.shut_down
+  - scene: scene.scene_shut_modes_down
+  - service: notify.mobile_app_stansign_iphone
+    data:
+      title: Have a Good Day!
+      message: It seems you're leaving home. We're turning off gadgets.
+  mode: single
+- id: 96e38ef408f547f192f9a24b8eacf999
+  alias: Returning Home
+  description: Automation when you're returning home (determined by Apple Home Service)
+  trigger:
+  - platform: state
+    entity_id: input_boolean.home_mode
+    to: 'on'
+  condition: []
+  action:
+  - service: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.study_mode
+  - service: notify.mobile_app_stansign_iphone
+    data:
+      title: Welcome Home!
+      message: It seems you're returning home. We'll get ready to greet you.
+  mode: single
+- alias: Turn Off Loading Wheel
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id:
+    - switch.curtain
+    - switch.desktop
+  action:
+  - service: input_boolean.turn_off
+    data:
+      entity_id: '{{ trigger.entity_id | replace(trigger.entity_id.split(''.'')[0],
+        ''input_boolean'') }}
+
+        '
+  mode: single
+  id: 682aa447ee53429c8ab04d5dbd4c755d
+- alias: Turn Off Loading Wheel-failsafe
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id:
+    - input_boolean.curtain
+    - input_boolean.desktop
+    to: 'on'
+    for:
+      minutes: 1
+  action:
+  - service: input_boolean.turn_off
+    data:
+      entity_id: '{{ trigger.entity_id }}
+
+        '
+  mode: single
+  id: 48ecb2b828234337b405050a4be3066e
+- id: '1635357109617'
+  alias: Balcony Entered
+  description: action when pressure sensor pressed
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: 5e2068bd95d9025612f0f42ea06746f7
+    entity_id: binary_sensor.pressure_sensor_contact
+    domain: binary_sensor
+  condition:
+  - condition: and
+    conditions:
+    - condition: numeric_state
+      entity_id: sensor.balcony_motion_sensor_illuminance_lux
+      below: '100'
+    - condition: state
+      entity_id: input_boolean.home_mode
+      state: 'on'
+  action:
+  - service: switch.turn_on
+    target:
+      entity_id:
+      - switch.light_switch_l2
+      - switch.balcony_line_lights
+  - service: light.turn_on
+    target:
+      entity_id: light.balcony_stand
+    data:
+      rgb_color:
+      - 255
+      - 164
+      - 62
+      brightness_pct: 100
+  mode: single
+- id: '1636880650452'
+  alias: Balcony Exit
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.pressure_sensor_contact
+    to: 'off'
+  condition: []
+  action:
+  - wait_for_trigger:
+    - platform: state
+      entity_id: binary_sensor.balcony_motion_sensor_occupancy
+      to: 'off'
+      for:
+        hours: 0
+        minutes: 0
+        seconds: 0
+        milliseconds: 0
+    continue_on_timeout: false
+    timeout: 00:03:00
+  - type: turn_off
+    device_id: 9ba6bd22274bb648c9b283678ba0d419
+    entity_id: switch.balcony_line_lights
+    domain: switch
+  - type: turn_off
+    device_id: 8f9ff86b41051cb24357c1850a800bcd
+    entity_id: light.balcony_stand
+    domain: light
+  - service: switch.turn_off
+    target:
+      entity_id: switch.light_switch_l2
+  mode: single
+- id: '1636961411787'
+  alias: Shower Button
+  description: ''
+  use_blueprint:
+    path: AramidX/sonoff_snzb01_wireless_switch_z2m.yaml
+    input:
+      switch: sensor.shower_button_action
+      single_press:
+      - service: notify.mobile_app_stansign_iphone
+        data:
+          message: Single Tap
+      double_press:
+      - service: notify.mobile_app_stansign_iphone
+        data:
+          message: Double Tap
+      long_press:
+      - service: notify.mobile_app_stansign_iphone
+        data:
+          message: long press
+- id: '1636962114150'
+  alias: Balcony Button
+  description: ''
+  use_blueprint:
+    path: AramidX/sonoff_snzb01_wireless_switch_z2m.yaml
+    input:
+      switch: sensor.balcony_button_action
+      single_press:
+      - type: turn_off
+        device_id: 9ba6bd22274bb648c9b283678ba0d419
+        entity_id: switch.balcony_line_lights
+        domain: switch
+      - type: turn_off
+        device_id: 8f9ff86b41051cb24357c1850a800bcd
+        entity_id: light.balcony_stand
+        domain: light
+      - service: switch.turn_off
+        target:
+          entity_id: switch.light_switch_l2
+      double_press:
+      - type: turn_on
+        device_id: 9ba6bd22274bb648c9b283678ba0d419
+        entity_id: switch.balcony_line_lights
+        domain: switch
+      - type: turn_on
+        device_id: 8f9ff86b41051cb24357c1850a800bcd
+        entity_id: light.balcony_stand
+        domain: light
+      - service: switch.turn_on
+        target:
+          entity_id: switch.light_switch_l2
+      long_press:
+      - choose:
+        - conditions:
+          - condition: numeric_state
+            entity_id: cover.curtain
+            attribute: current_position
+            above: '90'
+          sequence:
+          - service: cover.set_cover_position
+            target:
+              entity_id: cover.curtain
+            data:
+              position: 0
+        - conditions:
+          - condition: numeric_state
+            entity_id: cover.curtain
+            attribute: current_position
+            below: '20'
+          sequence:
+          - service: cover.set_cover_position
+            target:
+              entity_id: cover.curtain
+            data:
+              position: 100
+        default: []
+- id: '1637112500806'
+  alias: Balcony Door Rain Check
+  description: Notify when it's raining and balcony window is opened
+  trigger:
+  - platform: state
+    entity_id: sensor.naver_weather_weathercast_1
+    to: rainy
+  - platform: state
+    entity_id: sensor.naver_weather_weathercast_1
+    to: snow
+  condition:
+  - type: is_open
+    condition: device
+    device_id: d0a73b8097f14f58ada223c251d8e003
+    entity_id: binary_sensor.balcony_window_contact
+    domain: binary_sensor
+  action:
+  - service: notify.mobile_app_stansign_iphone
+    data:
+      message: It's raining and it seems balcony window is opend. Please Check!
+  mode: single
+- id: '1638678258359'
+  alias: Humidifier
+  description: ''
+  trigger:
+  - platform: numeric_state
+    below: '55'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+      milliseconds: 0
+    entity_id: sensor.air_monitor_humidity
+  - platform: numeric_state
+    entity_id: sensor.air_monitor_humidity
+    above: '60'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+      milliseconds: 0
+  condition:
+  - condition: state
+    entity_id: input_boolean.home_mode
+    state: 'on'
+  - condition: state
+    entity_id: binary_sensor.balcony_window_contact
+    state: 'off'
+  - condition: state
+    entity_id: fan.xiaomi_air_humidifier
+    state: 'false'
+    attribute: no_water
+  action:
+  - service: script.humidifier_control
+    data: {}
+  mode: single
+- id: '1638678459283'
+  alias: Balcony Door Closed
+  description: ''
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: d0a73b8097f14f58ada223c251d8e003
+    entity_id: binary_sensor.balcony_window_contact
+    domain: binary_sensor
+  condition:
+  - condition: state
+    entity_id: input_boolean.home_mode
+    state: 'on'
+  action:
+  - service: script.humidifier_control
+  mode: single
